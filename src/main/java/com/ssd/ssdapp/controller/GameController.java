@@ -14,7 +14,6 @@ import com.ssd.ssdapp.model.Team;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "http://localhost:4200")
 @Slf4j
 public class GameController {
 
