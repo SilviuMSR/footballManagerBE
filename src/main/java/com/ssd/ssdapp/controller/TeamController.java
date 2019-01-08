@@ -12,7 +12,6 @@ import com.ssd.ssdapp.repositories.UserRepository;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "http://localhost:4200")
 @Slf4j
 public class TeamController {
 
