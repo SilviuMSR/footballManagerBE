@@ -42,11 +42,11 @@ public class UserController {
             log.error("Empty username and password are not allowed");
             return false; // empty name or password
         }
-        if(user.getName().equals("admin"))
+        /*if(user.getName().equals("admin"))
         {
             log.error("You have no right to create admin account");
             return false;
-        }
+        }*/
 
         userRepository.save(user);
         teamRepository.save(team);
