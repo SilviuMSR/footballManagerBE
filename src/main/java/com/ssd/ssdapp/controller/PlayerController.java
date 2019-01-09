@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "https://ssdproject-4a4a4.firebaseapp.com")
 @Slf4j
 public class PlayerController {
 
