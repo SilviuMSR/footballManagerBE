@@ -35,3 +35,11 @@ public class TeamController {
     }
 
 }
+
+@Data
+@NoArgsConstructor
+class TeamDTO {
+    private String guestTeam;
+    private String homeTeam;
+}
+
