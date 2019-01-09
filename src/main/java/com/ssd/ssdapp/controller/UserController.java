@@ -12,7 +12,6 @@ import com.ssd.ssdapp.repositories.UserRepository;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "https://ssdproject-4a4a4.firebaseapp.com")
 @Slf4j
 public class UserController {
 
