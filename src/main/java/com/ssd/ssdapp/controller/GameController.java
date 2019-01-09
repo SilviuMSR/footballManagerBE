@@ -90,9 +90,14 @@ public class GameController {
     }
 
     @DeleteMapping("/deleteGame")
-    public Long deleteGameWithId(@RequestParam("gameId") Long gameId)
+    public boolean deleteGameWithId(@RequestParam("gameId") Long gameId)
     {
-        return gameRepository.deleteByGameId(gameId);
+        if(gameRepository.deleteByGameId(gameId) == 0)
+        {
+            return false;
+        }
+
+        return true;
     }
 
     @Autowired
