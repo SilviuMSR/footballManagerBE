@@ -14,12 +14,13 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api")
 @CrossOrigin(origins = "https://ssdproject-4a4a4.firebaseapp.com")
+//@CrossOrigin(origins = "http://localhost:4200")
 @Slf4j
 public class PlayerController {
 
     PlayerRepository playerRepository;
 
-    private String loggedTeamName;
+    private String loggedTeamName = null;
 
     @PostMapping("/addPlayer")
     public boolean insertToTeam(@RequestBody PlayerDTO playerDTO)
@@ -37,10 +38,10 @@ public class PlayerController {
     }
 
 
-    @GetMapping("/players")
-    public Iterable<Player> getPlayers()
+    @PostMapping("/teamPlayers")
+    public Iterable<Player> getPlayers(@RequestBody PlayerDTO playerDTO)
     {
-        return playerRepository.findAllByTeamName(loggedTeamName);
+        return playerRepository.findAllByTeamName(playerDTO.getTeamName());
     }
 
     @Autowired

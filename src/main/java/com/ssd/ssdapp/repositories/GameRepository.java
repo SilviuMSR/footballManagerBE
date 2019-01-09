@@ -12,5 +12,6 @@ public interface GameRepository extends CrudRepository<Game, Long> {
     Long deleteByGameId(Long gameId);
 
     Game findByHomeTeamAndGuestTeam(String hometeam, String guestteam);
+    Iterable<Game> findAllByGuestTeamOrHomeTeam(String hometeam, String guestteam);
 
 }

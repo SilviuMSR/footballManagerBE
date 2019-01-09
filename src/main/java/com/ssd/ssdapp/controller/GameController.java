@@ -15,6 +15,7 @@ import com.ssd.ssdapp.model.Team;
 @RestController
 @RequestMapping("/api")
 @CrossOrigin(origins = "https://ssdproject-4a4a4.firebaseapp.com")
+//@CrossOrigin(origins = "http://localhost:4200")
 @Slf4j
 public class GameController {
 
@@ -99,6 +100,12 @@ public class GameController {
         }
 
         return true;
+    }
+
+    @PostMapping("/teamGames")
+    public Iterable<Game> getTeamGames(@RequestBody GameDTO gameDTO)
+    {
+        return gameRepository.findAllByGuestTeamOrHomeTeam(gameDTO.getHomeTeam(), gameDTO.getGuestTeam());
     }
 
     @Autowired

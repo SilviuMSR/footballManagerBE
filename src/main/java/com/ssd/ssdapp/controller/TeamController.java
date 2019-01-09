@@ -13,6 +13,7 @@ import com.ssd.ssdapp.repositories.UserRepository;
 @RestController
 @RequestMapping("/api")
 @CrossOrigin(origins = "https://ssdproject-4a4a4.firebaseapp.com")
+//@CrossOrigin(origins = "http://localhost:4200")
 @Slf4j
 public class TeamController {
 
@@ -25,6 +26,7 @@ public class TeamController {
 
         return teams;
     }
+
 
     @Autowired
     public void setTeamRepository(TeamRepository teamRepository)
