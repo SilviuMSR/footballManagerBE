@@ -14,6 +14,7 @@ import com.ssd.ssdapp.model.Team;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "https://ssdproject-4a4a4.firebaseapp.com")
 @Slf4j
 public class GameController {
 
