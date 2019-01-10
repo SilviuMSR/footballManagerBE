@@ -1,8 +1,6 @@
 package com.ssd.ssdapp.controller;
 
 import com.ssd.ssdapp.model.Player;
-import com.ssd.ssdapp.model.PlayerAndTeam;
-import com.ssd.ssdapp.repositories.PlayerAndTeamRepository;
 import com.ssd.ssdapp.repositories.PlayerRepository;
 import com.ssd.ssdapp.repositories.TeamRepository;
 import lombok.Data;
@@ -21,7 +19,6 @@ import org.springframework.web.bind.annotation.*;
 public class PlayerController {
 
     PlayerRepository playerRepository;
-    PlayerAndTeamRepository playerAndTeamRepository;
 
 
     private String loggedTeamName = null;
@@ -41,19 +38,17 @@ public class PlayerController {
         return true;
     }
 
-
-    @PostMapping("/playerToGame")
-    public boolean addPlayerToGame(@RequestBody PlayerDTO playerDTO, @RequestBody TeamDTO teamDTO)
+    @DeleteMapping("/deletePlayer")
+    public boolean deletePlayerWithId(@RequestParam("playerId") Long playerId)
     {
-        PlayerAndTeam pAndT = PlayerAndTeam.builder()
-                .playerName(playerDTO.getPlayerName())
-                .guestTeam(teamDTO.getGuestTeam())
-                .homeTeam(teamDTO.getHomeTeam())
-                .build();
+        if(playerRepository.deleteByPlayerId(playerId) == 0)
+        {
+            return false;
+        }
 
-        this.playerAndTeamRepository.save(pAndT);
         return true;
     }
+
 
     @PostMapping("/teamPlayers")
     public Iterable<Player> getPlayers(@RequestBody PlayerDTO playerDTO)
@@ -62,10 +57,9 @@ public class PlayerController {
     }
 
     @Autowired
-    public void setPlayerRepository(PlayerRepository playerRepository, PlayerAndTeamRepository playerAndTeamRepository)
+    public void setPlayerRepository(PlayerRepository playerRepository)
     {
         this.playerRepository = playerRepository;
-        this.playerAndTeamRepository = playerAndTeamRepository;
     }
 
 }
